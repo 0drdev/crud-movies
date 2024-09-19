@@ -6,6 +6,13 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+
+    <% movies.forEach(movie => { %>
+      <article style="text-align: center;">
+        <img width="300" height="500" src="<%= movie.poster %>" alt="<%= movie.title %>">  
+        <h2><%= movie.title%></h2>
+        <a href="/<%= movie.id %>">Ver detalles</a>
+      </article>
+      <%  }); %>
   </body>
 </html>
