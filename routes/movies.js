@@ -6,6 +6,6 @@ const MoviesController = require('../controllers/MoviesController.js')
 /* GEt movies listing */
 router.get('/', generalMiddleware, MoviesController.allMovies)
 
-router.get('/:id', generalMiddleware, MoviesController.indexMovie)
+router.get('/:id', generalMiddleware, MoviesController.showMovie)
 
 module.exports = router

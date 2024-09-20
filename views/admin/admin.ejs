@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <h2><%= message %></h2>
+    
+    <% if (user) { %>
+      <p>Bienvenido, <%= user.name %>!</p>
+      <p>Tu rol es: <%= user.rol %></p>
+    <% } %>
+  </body>
+</html>

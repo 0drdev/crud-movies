@@ -12,6 +12,7 @@ const {
 } = require('./middlewares/errorMiddleware')
 
 const app = express()
+
 const PORT = process.env.PORT || 3000 // Use the port of enviroment varible or port 3000 for default
 
 app.use(express.json()) // To handle JSON in the request body

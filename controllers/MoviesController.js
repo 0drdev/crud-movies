@@ -10,9 +10,13 @@ const MoviesController = {
     res.render('index', { movies, title: 'Movies' })
   },
   // Movie especific
-  indexMovie: (req, res) => {
+  showMovie: (req, res) => {
     const movie = movies.find((movie) => movie.id === req.params.id)
-    res.render('../views/movie/movie.ejs', { movie, title: 'Movie ID' })
+    if (movie) {
+      res.render('movie/movie', { movie, title: movie.title })
+    } else {
+      res.status(404).send('Movie not found')
+    }
   }
 }
 module.exports = MoviesController

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "12345678",
+    "rol": "client"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "password": "12345678",
+    "rol": "admin"
+  },
+  {
+    "name": "prueba hash",
+    "email": "pruebahash@prueba.com",
+    "password": "12345678",
+    "rol": "client"
+  }
+]
