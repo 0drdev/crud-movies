@@ -12,16 +12,12 @@ const UserController = {
       (user) => user.email === email && user.password === password
     )
 
-    if (!user) {
-      return res.render('login', {
-        title: 'Login Page',
-        error: 'Credenciales inválidas. Inténtalo de nuevo.',
-        email // Mantener el email en el formulario
-      })
+    if (user) {
+      return res.redirect('/admin')
     } else {
       return res.render('login', {
         title: 'Login Page',
-        message: 'Usuario Autenticado',
+        error: 'Credenciales inválidas. Inténtalo de nuevo.',
         email // Mantener el email en el formulario
       })
     }
