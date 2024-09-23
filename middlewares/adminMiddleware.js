@@ -3,6 +3,7 @@ const users = require('../data/users.json')
 function adminMiddleware(req, res, next) {
   const { email } = req.body
   const user = users.find((u) => u.email === email)
+
   // Redirigir según el rol del usuario
   if (user.rol === 'admin') {
     return res.redirect('/admin')

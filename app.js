@@ -3,17 +3,15 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
-
-const indexRouter = require('./routes/index')
-
 const {
   notFoundHandler,
   errorHandler
 } = require('./middlewares/errorMiddleware')
+const PORT = process.env.PORT || 3000 // Use the port of enviroment varible or port 3000 for default
+
+const indexRouter = require('./routes/index')
 
 const app = express()
-
-const PORT = process.env.PORT || 3000 // Use the port of enviroment varible or port 3000 for default
 
 app.use(express.json()) // To handle JSON in the request body
 

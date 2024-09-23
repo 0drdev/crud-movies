@@ -8,6 +8,7 @@ const MoviesController = {
     const data = fs.readFileSync(path.join('data', 'movies.json'), 'utf8')
     const movies = JSON.parse(data)
     res.render('index', { movies, title: 'Movies' })
+    // res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out')
   },
   // Movie especific
   showMovie: (req, res) => {

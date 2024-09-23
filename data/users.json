@@ -2,19 +2,19 @@
   {
     "name": "John Doe",
     "email": "john@example.com",
-    "password": "12345678",
+    "password": "$2y$10$.yQlsRqTniLvRAui/s6zgOOVx5DTZs.vdcutg7b8jOEDi2I4QzoH6",
     "rol": "client"
   },
   {
     "name": "Jane Smith",
     "email": "jane@example.com",
-    "password": "12345678",
+    "password": "$2y$10$.yQlsRqTniLvRAui/s6zgOOVx5DTZs.vdcutg7b8jOEDi2I4QzoH6",
     "rol": "admin"
   },
   {
     "name": "prueba hash",
     "email": "pruebahash@prueba.com",
-    "password": "12345678",
+    "password": "$2y$10$.yQlsRqTniLvRAui/s6zgOOVx5DTZs.vdcutg7b8jOEDi2I4QzoH6",
     "rol": "client"
   }
 ]
