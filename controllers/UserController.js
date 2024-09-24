@@ -34,16 +34,22 @@ const UserController = {
     }
 
     // Generar el token JWT
-    const token = jwt.sign({ name: user.name, email: user.email }, SECRET_KEY, {
-      expiresIn: '1h'
-    })
+    const token = jwt.sign(
+      { name: user.name, email: user.email, rol: user.rol },
+      SECRET_KEY,
+      {
+        expiresIn: '1h'
+      }
+    )
+    // Guardar el token en una cookie segura (httpOnly para mayor seguridad)
+    res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }) // Cookie dura 1h
 
     // Enviar el token y redirigir a la vista admin/admin
-    res.render('admin/admin', {
-      title: user.name,
-      message: 'Login exitoso',
-      token
-    })
+    res.redirect('/admin')
+  },
+  logout: (req, res) => {
+    res.clearCookie('token') // Elimina la cookie con el token JWT
+    res.redirect('/user/login') // Redirige al formulario de login
   }
 }
 

@@ -1,17 +1,20 @@
-// middlewares/adminMiddleware.js
-const users = require('../data/users.json')
-function adminMiddleware(req, res, next) {
-  const { email } = req.body
-  const user = users.find((u) => u.email === email)
+// middlewares/authMiddleware.js
+const jwt = require('jsonwebtoken')
 
-  // Redirigir según el rol del usuario
-  if (user.rol === 'admin') {
-    return res.redirect('/admin')
-  } else if (user.rol === 'client') {
-    return res.redirect('/')
+function authMiddleware(req, res, next) {
+  const token = req.cookies.token // O de la cabecera Authorization
+
+  if (!token) {
+    return res.redirect('/user/login') // Redirige si no hay token
   }
-  // Si por alguna razón el rol no es ni admin ni client, simplemente avanza
-  next()
+
+  jwt.verify(token, process.env.SECRET_KEY || 'miSuperSecreto', (err, user) => {
+    if (err) {
+      return res.redirect('/user/login') // Redirige si el token es inválido
+    }
+    req.user = user // Almacena el usuario en la solicitud
+    next() // Continua a la siguiente función
+  })
 }
 
-module.exports = adminMiddleware
+module.exports = authMiddleware
