@@ -198,15 +198,5 @@
       "Fantasy"
     ],
     "rate": 7.8
-  },
-  {
-    "id": 16,
-    "title": "Dr",
-    "year": "1999",
-    "director": "DR",
-    "duration": "123",
-    "genre": "Prueba",
-    "rate": "9.33",
-    "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp"
   }
 ]

@@ -96,8 +96,27 @@ const AdminController = {
     }
   },
   deleteMovie: (req, res) => {
-    const { id } = req.params
-    const movieIndex = movies.findIndex((movie) => movie.id === id)
+    // Convertir req.params.id a un número
+    const movieId = Number(req.params.id)
+
+    // Encontrar el índice de la película
+    const movieIndex = movies.findIndex((movie) => movie.id === movieId)
+
+    if (movieIndex !== -1) {
+      // Eliminar la película del array de movies
+      movies.splice(movieIndex, 1)
+
+      // Escribir los cambios en el archivo movies.json
+      fs.writeFileSync(
+        path.join(__dirname, '../data/movies.json'),
+        JSON.stringify(movies, null, 2),
+        'utf8'
+      )
+      // Redirigir a la lista de películas después de eliminar
+      return res.status(200).redirect('/admin/movies')
+    } else {
+      return res.status(404).send('Movie not found')
+    }
   }
 }
 
