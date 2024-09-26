@@ -7,10 +7,10 @@
   </head>
   <body>
     <h1 class="text-center"><%= title %></h1>
-    <main class="col-12 d-flex justify-content-center flex-wrap">
+    <main class="col-12 d-flex justify-content-center justify-content-xl-between flex-wrap">
 
     <% movies.forEach(movie => { %>
-      <article class="text-center col-4 mx-3 mx-lg-5">
+      <article class="text-center col-12 col-md-5 col-lg-4 col-xl-3 mt-4 mx-5">
         <img width="300" height="500" src="<%= movie.poster %>" alt="<%= movie.title %>">  
         <h2><%= movie.title%></h2>
         <a href="/movies/<%= movie.id %>">Ver detalles</a>
