@@ -1,10 +1,12 @@
 // middlewares/errorHandler.js
-const createError = require('http-errors')
 const fs = require('node:fs')
 const path = require('path')
 
 function notFoundHandler(req, res, next) {
-  next(createError(404))
+  res.status(404).render('error', {
+    message: 'Page Not Found',
+    stack: null
+  })
 }
 
 function errorHandler(err, req, res, next) {

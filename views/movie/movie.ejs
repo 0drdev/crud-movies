@@ -14,14 +14,19 @@
 
 <body>
     <h1 class="text-center">Detalles de la película</h1>
-    <article class="d-flex align-items-center border-0 justify-content-center">
+    <article class="d-flex align-items-center border-0 justify-content-center vh-100">
         <section class="border-0">
             <img width="400" src="<%= movie.poster %>">
         </section>
         <section class="border-0">
-            <h2><%= movie.title %></h2>
-            <p>Genero: <%= movie.genre %></p>
-            <p>Año: <%= movie.year %></p>
+            <h2 class="mb-3 mb-lg-5"><%= movie.title %></h2>
+            <ul class="list-group">
+                <li class="list-group-item item-movie"><strong>Genre:</strong> <%= movie.genre %></li>
+                <li class="list-group-item item-movie"><strong>Year:</strong> <%= movie.year %></li>
+                <li class="list-group-item item-movie"><strong>Director: </strong><%= movie.director %></li>
+                <li class="list-group-item item-movie"><strong>Duration: </strong> <%= movie.duration %></li>
+                <li class="list-group-item item-movie"><strong>Rate: </strong> <%= movie.rate %></li>
+              </ul>
         </section>
     </article>
 </body>

@@ -708,3 +708,16 @@ sub {
   padding: 1.5rem;
   margin: 2rem 0;
 }
+
+/* start styles movie */
+.item-movie{
+  background: #f1f1f112;
+  color: white;
+  border-color: transparent;
+}
+
+.item-movie:hover{
+  background: #f1f1f11f;
+
+}
+/* end styles movie */
