@@ -17,4 +17,6 @@ router.post('/movies/edit/:id', adminMiddleware, AdminController.editMovie)
 
 router.post('/movies/:id', AdminController.deleteMovie)
 
+router.get('/genres', adminMiddleware, AdminController.allGenres)
+
 module.exports = router

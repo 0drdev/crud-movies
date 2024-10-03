@@ -1,4 +1,3 @@
-// middlewares/errorHandler.js
 const fs = require('node:fs')
 const path = require('path')
 
@@ -14,18 +13,22 @@ function errorHandler(err, req, res, next) {
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  const message = 'Error' + err.message
+  const message = 'Error: ' + err.message
   const dateTime = new Date().toLocaleString()
 
+  // Log del error en un archivo
   fs.createWriteStream(path.join('logs', 'error_logs.txt'), { flags: 'a' })
   fs.appendFileSync(
     path.join('logs', 'error_logs.txt'),
-    dateTime + ' - ' + message + '\n'
+    `${dateTime} - ${message}\n`
   )
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+  res.render('error', {
+    message: err.message,
+    stack: req.app.get('env') === 'development' ? err.stack : null // Solo mostrar el stack en desarrollo
+  })
 }
 
 module.exports = {

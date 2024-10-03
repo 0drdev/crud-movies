@@ -117,6 +117,46 @@ const AdminController = {
     } else {
       return res.status(404).send('Movie not found')
     }
+  },
+  allGenres: (req, res) => {
+    const data = fs.readFileSync(path.join('data', 'movies.json'), 'utf8')
+    const movies = JSON.parse(data)
+
+    // Extraer todos los géneros y convertirlos en un solo array
+    let allGenres = movies.flatMap((movie) => [].concat(movie.genre))
+
+    // Eliminar duplicados
+    allGenres = [...new Set(allGenres)]
+
+    // Renderizar la vista con los géneros únicos
+    res.render('admin/admin-genres', { genres: allGenres, title: 'Géneros' })
+  },
+  createGenre: (req, res) => {
+    res.render('admin/genre-create', { title: 'Crear Genero' })
+  },
+  storeGenre: (req, res) => {
+    const newGenre = req.body.genre // Obtiene el género desde el formulario
+
+    // Leer los datos de las películas
+    const moviesData = fs.readFileSync(path.join('data', 'movies.json'), 'utf8')
+    const movies = JSON.parse(moviesData)
+
+    // Agregar el nuevo género a cada película (o a las que consideres necesarias)
+    movies.forEach((movie) => {
+      if (!movie.genre.includes(newGenre)) {
+        // Evita duplicados
+        movie.genre.push(newGenre)
+      }
+    })
+
+    // Guardar de nuevo en el archivo
+    fs.writeFileSync(
+      path.join('data', 'movies.json'),
+      JSON.stringify(movies, null, 2)
+    )
+
+    // Redirigir a la lista de géneros
+    res.redirect('/admin/genres')
   }
 }
 
